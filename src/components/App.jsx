@@ -4,6 +4,7 @@ import {ImageGalleryItem} from 'components/ImageGalleryItem';
 import {Loader} from 'components/Loader';
 import {Button} from 'components/Button';
 import {Modal} from 'components/Modal';
+import 'components/styles.css';
 
 
 export const App = () => {

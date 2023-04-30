@@ -1,19 +1,40 @@
 import { Component } from 'react';
 
 export class Searchbar extends Component {
+  state = {
+    search: ''
+  };
+
+  search = (evt) => {
+    evt.preventDefault();
+    const value = evt.target.elements.input.value;
+    console.log(value);
+    this.setState(() => ({
+      search: value
+    }), () => {
+      console.log(this.state);
+    });
+  };
+
   render() {
     return (
-      <header class="searchbar">
-        <form class="form">
-          <button type="submit" class="button">
-            <span class="button-label">Search</span>
+      <header className="searchbar">
+        <form
+          className="form"
+          onSubmit={(evt) => {
+            this.search(evt);
+          }}
+        >
+          <button type="submit" className="button">
+            <span className="button-label">Search</span>
           </button>
 
           <input
-            class="input"
+            className="input"
             type="text"
-            autocomplete="off"
-            autofocus
+            autoComplete="off"
+            autoFocus
+            name="input"
             placeholder="Search images and photos"
           />
         </form>

@@ -5,12 +5,14 @@ import {Loader} from 'components/Loader';
 import {Button} from 'components/Button';
 import {Modal} from 'components/Modal';
 import 'components/styles.css';
+import { Component } from 'react';
 
 
-export const App = () => {
+export class App extends Component {
+render(){
   return (
     <>
-      <Searchbar />
+      <Searchbar/>
       <ImageGallery />
       <ImageGalleryItem />
       <Loader />
@@ -18,4 +20,5 @@ export const App = () => {
       <Modal />
     </>
   );
+}
 };

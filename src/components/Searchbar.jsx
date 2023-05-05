@@ -5,32 +5,21 @@ export class Searchbar extends Component {
     search: ''
   };
 
-  search = (evt) => {
-    evt.preventDefault();
-    const value = evt.target.elements.input.value;
-    console.log(value);
-    this.setState(() => ({
-      search: value
-    }), () => {
-      console.log(this.state);
-    });
-  };
-
   render() {
     return (
-      <header className="searchbar">
+      <header className="Searchbar">
         <form
-          className="form"
+          className="SearchForm"
           onSubmit={(evt) => {
-            this.search(evt);
+            this.props.search(evt);
           }}
         >
-          <button type="submit" className="button">
-            <span className="button-label">Search</span>
+          <button type="submit" className="SearchForm-button">
+            <span className="SearchForm-button-label">Search</span>
           </button>
 
           <input
-            className="input"
+            className="SearchForm-input"
             type="text"
             autoComplete="off"
             autoFocus

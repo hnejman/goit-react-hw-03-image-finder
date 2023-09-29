@@ -44,7 +44,7 @@ export class App extends Component {
           pageNr: 2,
           isLoading: false,
         });
-        if(response.data.hits.length===12){
+        if(response.data.hits.length===15){
           this.setState({
             isButton: true
           });

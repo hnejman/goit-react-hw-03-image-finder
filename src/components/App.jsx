@@ -29,7 +29,7 @@ export class App extends Component {
 
   async getFromAPI(search, key, page) {
     const response = await axios.get(
-      `?key=${key}&page=${page}&q=${search}&image_type=photo&orientation=horizontal&per_page=12`
+      `?key=${key}&page=${page}&q=${search}&per_page=15&image_type=photo&orientation=horizontal&per_page=12`
     );
     return response;
   }

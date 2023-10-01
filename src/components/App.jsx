@@ -4,10 +4,7 @@ import { Loader } from 'components/Loader';
 import { Button } from 'components/Button';
 import { Modal } from 'components/Modal';
 import 'components/styles.css';
-import { Component } from 'react';
-import axios from 'axios';
-
-axios.defaults.baseURL = 'https://pixabay.com/api';
+import { Component } from 'react'; 
 
 export class App extends Component {
   state = {
@@ -27,18 +24,11 @@ export class App extends Component {
     this.nextPage = this.nextPage.bind(this);
   }
 
-  async getFromAPI(search, key, page) {
-    const response = await axios.get(
-      `?key=${key}&page=${page}&q=${search}&image_type=photo&orientation=horizontal&per_page=15`
-    );
-    return response;
-  }
-
-  search = evt => {
+  search = (evt, getFromAPI) => {
     evt.preventDefault();
     const value = evt.target.elements.input.value;
     this.setState({ search: value, isLoading: true });
-    this.getFromAPI(value, this.state.key, 1).then(response => {
+    getFromAPI(value, this.state.key, 1).then(response => {
         this.setState({
           data: response.data.hits,
           pageNr: 2,
@@ -75,12 +65,12 @@ export class App extends Component {
     }
   };
 
-  nextPage() {
+  nextPage(getFromAPI) {
     this.setState(prevState => ({
       pageNr: prevState.pageNr + 1,
     }));
     this.setState({ isLoading: true });
-    this.getFromAPI(this.state.search, this.state.key, this.state.pageNr).then(
+    getFromAPI(this.state.search, this.state.key, this.state.pageNr).then(
       response => {
           this.setState(previos => ({
             data: previos.data.concat(response.data.hits),

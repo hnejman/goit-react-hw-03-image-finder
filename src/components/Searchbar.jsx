@@ -1,3 +1,4 @@
+import getFromAPI from 'getFromApi';
 import { Component } from 'react';
 
 export class Searchbar extends Component {
@@ -11,7 +12,7 @@ export class Searchbar extends Component {
         <form
           className="SearchForm"
           onSubmit={(evt) => {
-            this.props.search(evt);
+            this.props.search(evt, getFromAPI);
           }}
         >
           <button type="submit" className="SearchForm-button">

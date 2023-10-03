@@ -34,7 +34,6 @@ export class App extends Component {
           pageNr: 2,
           isLoading: false,
         });
-        console.log(response.data.totalHits)
         if(response.data.totalHits>15){
           this.setState({
             isButton: true
